@@ -3,3 +3,10 @@ main: me.jackgoldsworth.campustown.CampusTown
 author: Jack Goldsworth
 description: Custom plugin for the campus town bois.
 version: 1.0.0
+commands:
+  fakejob:
+    description: Tell Joe that his job is fake.
+    usage: /<command>
+  d20:
+    description: Roll a dice 20.
+    usage: /<command>
