@@ -10,3 +10,12 @@ commands:
   d20:
     description: Roll a dice 20.
     usage: /<command>
+  setprefix:
+    description: Set a prefix on your username.
+    usage: /<command> <prefix>
+  sethome:
+    description: Set a players home.
+    usage: /<command>
+  home:
+    description: Teleports the player home.
+    usage: /<command>

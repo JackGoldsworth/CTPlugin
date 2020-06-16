@@ -1,7 +1,8 @@
 package me.jackgoldsworth.campustown;
 
-import me.jackgoldsworth.campustown.command.D20Command;
-import me.jackgoldsworth.campustown.command.FakeJobCommand;
+import me.jackgoldsworth.campustown.command.*;
+import me.jackgoldsworth.campustown.config.ConfigurationManager;
+import me.jackgoldsworth.campustown.events.ChatEvent;
 import me.jackgoldsworth.campustown.events.DeathEvent;
 import me.jackgoldsworth.campustown.events.KillEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,10 +16,15 @@ public class CampusTown extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        ConfigurationManager.loadConfig();
         this.getServer().getPluginManager().registerEvents(new DeathEvent(), this);
         this.getServer().getPluginManager().registerEvents(new KillEvent(), this);
+        this.getServer().getPluginManager().registerEvents(new ChatEvent(), this);
         Objects.requireNonNull(this.getServer().getPluginCommand("fakejob")).setExecutor(new FakeJobCommand());
         Objects.requireNonNull(this.getServer().getPluginCommand("d20")).setExecutor(new D20Command());
+        Objects.requireNonNull(this.getServer().getPluginCommand("setprefix")).setExecutor(new PrefixCommand());
+        Objects.requireNonNull(this.getServer().getPluginCommand("sethome")).setExecutor(new SetHomeCommand());
+        Objects.requireNonNull(this.getServer().getPluginCommand("home")).setExecutor(new HomeCommand());
     }
 
     @Override
