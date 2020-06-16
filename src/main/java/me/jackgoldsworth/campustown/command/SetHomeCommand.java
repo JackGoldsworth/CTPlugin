@@ -22,7 +22,6 @@ public class SetHomeCommand implements CommandExecutor {
         ConfigurationManager.setValue(p.getName() + ".z", p.getLocation().getZ());
         ConfigurationManager.setValue(p.getName() + ".yaw", p.getLocation().getYaw());
         ConfigurationManager.setValue(p.getName() + ".pitch", p.getLocation().getPitch());
-        ConfigurationManager.saveAndReload();
         p.sendMessage(ChatColor.GREEN + "Your home has been set!");
         return true;
     }

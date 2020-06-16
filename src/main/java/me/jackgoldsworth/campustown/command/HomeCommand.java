@@ -18,24 +18,21 @@ public class HomeCommand implements CommandExecutor {
             return false;
         }
         Player p = (Player) commandSender;
-        String x = ConfigurationManager.getValue(p.getName() + ".x");
-        if (x != null) {
-            String y = ConfigurationManager.getValue(p.getName() + ".y");
-            String z = ConfigurationManager.getValue(p.getName() + ".z");
-            String yaw = ConfigurationManager.getValue(p.getName() + ".yaw");
-            String pitch = ConfigurationManager.getValue(p.getName() + ".pitch");
-            String worldName = ConfigurationManager.getValue(p.getName() + ".world");
-            Location location = new Location(CampusTown.getInstance().getServer().getWorld(worldName),
-                    Double.parseDouble(x),
-                    Double.parseDouble(y),
-                    Double.parseDouble(z),
-                    Float.parseFloat(yaw),
-                    Float.parseFloat(pitch)
-            );
-            p.teleport(location);
-            p.sendMessage(ChatColor.GREEN + "You teleported home.");
-            return true;
-        }
-        return false;
+        double x = ConfigurationManager.getValueDouble(p.getName() + ".x");
+        double y = ConfigurationManager.getValueDouble(p.getName() + ".y");
+        double z = ConfigurationManager.getValueDouble(p.getName() + ".z");
+        double yaw = ConfigurationManager.getValueDouble(p.getName() + ".yaw");
+        double pitch = ConfigurationManager.getValueDouble(p.getName() + ".pitch");
+        String worldName = ConfigurationManager.getValue(p.getName() + ".world");
+        Location location = new Location(CampusTown.getInstance().getServer().getWorld(worldName),
+                x,
+                y,
+                z,
+                (float) yaw,
+                (float) pitch
+        );
+        p.teleport(location);
+        p.sendMessage(ChatColor.GREEN + "You teleported home.");
+        return true;
     }
 }

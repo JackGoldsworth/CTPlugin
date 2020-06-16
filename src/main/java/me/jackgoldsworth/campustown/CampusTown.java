@@ -21,6 +21,7 @@ public class CampusTown extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new DeathEvent(), this);
         this.getServer().getPluginManager().registerEvents(new KillEvent(), this);
         this.getServer().getPluginManager().registerEvents(new ChatEvent(), this);
+        //this.getServer().getPluginManager().registerEvents(new PlayerDisconnectEvent(), this);
         Objects.requireNonNull(this.getServer().getPluginCommand("fakejob")).setExecutor(new FakeJobCommand());
         Objects.requireNonNull(this.getServer().getPluginCommand("d20")).setExecutor(new D20Command());
         Objects.requireNonNull(this.getServer().getPluginCommand("setprefix")).setExecutor(new PrefixCommand());
@@ -30,6 +31,7 @@ public class CampusTown extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        this.saveConfig();
         instance = null;
     }
 

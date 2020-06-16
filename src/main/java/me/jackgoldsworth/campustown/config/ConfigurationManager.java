@@ -6,22 +6,35 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class ConfigurationManager {
 
     private final static CampusTown campusTown = CampusTown.getInstance();
-    private static FileConfiguration config;
 
     public static void loadConfig() {
-        config = campusTown.getConfig();
-        config.options().copyDefaults(true);
+        campusTown.getConfig().options().copyDefaults(true);
     }
 
-    public static void setValue(String path, Object value) {
-        config.set(path, value);
+    public static void setValue(String path, String value) {
+        campusTown.getConfig().set(path, value);
+        campusTown.saveConfig();
+    }
+
+    public static void setValue(String path, double value) {
+        campusTown.getConfig().set(path, value);
+        campusTown.saveConfig();
+    }
+
+    public static void setValue(String path, float value) {
+        campusTown.getConfig().set(path, value);
+        campusTown.saveConfig();
     }
 
     public static String getValue(String path) {
-        return config.getString(path);
+        return campusTown.getConfig().getString(path);
+    }
+
+    public static double getValueDouble(String path) {
+        return campusTown.getConfig().getDouble(path);
     }
 
     public static FileConfiguration getConfig() {
-        return config;
+        return campusTown.getConfig();
     }
 }

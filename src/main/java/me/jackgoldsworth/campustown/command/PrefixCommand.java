@@ -1,6 +1,5 @@
 package me.jackgoldsworth.campustown.command;
 
-import me.jackgoldsworth.campustown.CampusTown;
 import me.jackgoldsworth.campustown.config.ConfigurationManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -20,7 +19,6 @@ public class PrefixCommand implements CommandExecutor {
             return false;
         }
         ConfigurationManager.setValue(commandSender.getName() + ".prefix", strings[0]);
-        CampusTown.getInstance().saveConfig();
         return true;
     }
 }
