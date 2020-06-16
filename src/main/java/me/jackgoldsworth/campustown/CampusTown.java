@@ -17,6 +17,7 @@ public class CampusTown extends JavaPlugin {
     public void onEnable() {
         instance = this;
         ConfigurationManager.loadConfig();
+        this.reloadConfig();
         this.getServer().getPluginManager().registerEvents(new DeathEvent(), this);
         this.getServer().getPluginManager().registerEvents(new KillEvent(), this);
         this.getServer().getPluginManager().registerEvents(new ChatEvent(), this);

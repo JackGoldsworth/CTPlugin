@@ -17,12 +17,11 @@ public class ConfigurationManager {
         config.set(path, value);
     }
 
-    public static void saveAndReload() {
-        campusTown.saveConfig();
-        campusTown.reloadConfig();
-    }
-
     public static String getValue(String path) {
         return config.getString(path);
+    }
+
+    public static FileConfiguration getConfig() {
+        return config;
     }
 }
