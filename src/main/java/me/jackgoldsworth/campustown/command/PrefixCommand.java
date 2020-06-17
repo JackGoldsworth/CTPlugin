@@ -1,6 +1,5 @@
 package me.jackgoldsworth.campustown.command;
 
-import me.jackgoldsworth.campustown.Permissions;
 import me.jackgoldsworth.campustown.config.ConfigurationManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -16,14 +15,14 @@ public class PrefixCommand implements CommandExecutor {
             commandSender.sendMessage(ChatColor.RED + "Please enter in a prefix!");
             return false;
         }
-        if (strings.length == 2) {
-            Player p = commandSender.getServer().getPlayer(strings[0]);
-            if (p != null && p.hasPermission(Permissions.PREFIX.getPermission())) {
-                ConfigurationManager.setValue(p.getName() + ".prefix", strings[1]);
-            }
-            return true;
-        }
         if (!(commandSender instanceof Player)) {
+            if (strings.length == 2) {
+                Player p = commandSender.getServer().getPlayer(strings[0]);
+                if (p != null) {
+                    ConfigurationManager.setValue(p.getName() + ".prefix", strings[1]);
+                }
+                return true;
+            }
             commandSender.sendMessage(ChatColor.RED + "You cannot enter this command through a console!");
             return false;
         }
