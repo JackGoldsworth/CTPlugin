@@ -17,9 +17,9 @@ public class PrefixCommand implements CommandExecutor {
             return false;
         }
         if (strings.length == 2) {
-            Player p = commandSender.getServer().getPlayer(strings[1]);
+            Player p = commandSender.getServer().getPlayer(strings[0]);
             if (p != null && p.hasPermission(Permissions.PREFIX.getPermission())) {
-                ConfigurationManager.setValue(p.getName() + ".prefix", strings[0]);
+                ConfigurationManager.setValue(p.getName() + ".prefix", strings[1]);
             }
             return true;
         }
