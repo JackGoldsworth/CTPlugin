@@ -15,9 +15,6 @@ public class PrefixCommand implements CommandExecutor {
         if (strings.length == 0) {
             commandSender.sendMessage(ChatColor.RED + "Please enter in a prefix!");
             return false;
-        } else if (!(commandSender instanceof Player)) {
-            commandSender.sendMessage(ChatColor.RED + "You cannot enter this command through a console!");
-            return false;
         }
         if (strings.length == 2) {
             Player p = commandSender.getServer().getPlayer(strings[1]);
@@ -25,6 +22,10 @@ public class PrefixCommand implements CommandExecutor {
                 ConfigurationManager.setValue(p.getName() + ".prefix", strings[0]);
             }
             return true;
+        }
+        if (!(commandSender instanceof Player)) {
+            commandSender.sendMessage(ChatColor.RED + "You cannot enter this command through a console!");
+            return false;
         }
         ConfigurationManager.setValue(commandSender.getName() + ".prefix", strings[0]);
         return true;
