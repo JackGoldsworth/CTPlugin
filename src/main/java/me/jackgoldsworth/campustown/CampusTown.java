@@ -1,6 +1,13 @@
 package me.jackgoldsworth.campustown;
 
-import me.jackgoldsworth.campustown.command.*;
+import me.jackgoldsworth.campustown.command.PrefixCommand;
+import me.jackgoldsworth.campustown.command.fun.D20Command;
+import me.jackgoldsworth.campustown.command.fun.FakeJobCommand;
+import me.jackgoldsworth.campustown.command.points.ShopCommand;
+import me.jackgoldsworth.campustown.command.points.StatsCommand;
+import me.jackgoldsworth.campustown.command.tp.HomeCommand;
+import me.jackgoldsworth.campustown.command.tp.SetHomeCommand;
+import me.jackgoldsworth.campustown.command.tp.TeleportCommand;
 import me.jackgoldsworth.campustown.config.ConfigurationManager;
 import me.jackgoldsworth.campustown.events.ChatEvent;
 import me.jackgoldsworth.campustown.events.DeathEvent;
@@ -34,6 +41,7 @@ public class CampusTown extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(pointShopUI, this);
 
         Objects.requireNonNull(this.getServer().getPluginCommand("fakejob")).setExecutor(new FakeJobCommand());
+        Objects.requireNonNull(this.getServer().getPluginCommand("tp")).setExecutor(new TeleportCommand());
         Objects.requireNonNull(this.getServer().getPluginCommand("d20")).setExecutor(new D20Command());
         Objects.requireNonNull(this.getServer().getPluginCommand("setprefix")).setExecutor(new PrefixCommand());
         Objects.requireNonNull(this.getServer().getPluginCommand("sethome")).setExecutor(new SetHomeCommand());

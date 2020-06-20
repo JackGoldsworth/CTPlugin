@@ -1,4 +1,4 @@
-package me.jackgoldsworth.campustown.command;
+package me.jackgoldsworth.campustown.command.points;
 
 import me.jackgoldsworth.campustown.config.ConfigurationManager;
 import me.jackgoldsworth.campustown.model.PlayerInfo;

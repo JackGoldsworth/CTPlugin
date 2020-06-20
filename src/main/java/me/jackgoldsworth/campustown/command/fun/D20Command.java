@@ -1,4 +1,4 @@
-package me.jackgoldsworth.campustown.command;
+package me.jackgoldsworth.campustown.command.fun;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

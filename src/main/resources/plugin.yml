@@ -27,3 +27,6 @@ commands:
   stats:
     description: Let's a user see their current stats.
     usage: /<command>
+  tp:
+    description: Let's a user teleport to another user by spending 2 points.
+    usage: /<command> <username>
