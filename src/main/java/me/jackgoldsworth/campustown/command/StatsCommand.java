@@ -20,7 +20,7 @@ public class StatsCommand implements CommandExecutor {
         PlayerInfo info = ConfigurationManager.getPlayerInfo(p.getUniqueId().toString());
         p.sendMessage(ChatColor.GREEN + "---------- " + ChatColor.AQUA + p.getName() + ChatColor.GREEN + " ----------");
         p.sendMessage(ChatColor.GREEN + "Experience: " + ChatColor.AQUA + info.getExp());
-        p.sendMessage(ChatColor.GREEN + "Experience Till Next Level: " + ChatColor.AQUA + info.getExperienceNextLevel());
+        p.sendMessage(ChatColor.GREEN + "Experience Needed for Next Level: " + ChatColor.AQUA + info.getExperienceNextLevel());
         p.sendMessage(ChatColor.GREEN + "Level: " + ChatColor.AQUA + info.getLevel());
         p.sendMessage(ChatColor.GREEN + "Points: " + ChatColor.AQUA + info.getPoints());
         return true;
