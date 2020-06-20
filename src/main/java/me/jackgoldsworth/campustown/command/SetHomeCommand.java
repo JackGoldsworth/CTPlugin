@@ -16,12 +16,13 @@ public class SetHomeCommand implements CommandExecutor {
             return false;
         }
         Player p = (Player) commandSender;
-        ConfigurationManager.setValue(p.getName() + ".world", p.getLocation().getWorld().getName());
-        ConfigurationManager.setValue(p.getName() + ".x", p.getLocation().getX());
-        ConfigurationManager.setValue(p.getName() + ".y", p.getLocation().getY());
-        ConfigurationManager.setValue(p.getName() + ".z", p.getLocation().getZ());
-        ConfigurationManager.setValue(p.getName() + ".yaw", p.getLocation().getYaw());
-        ConfigurationManager.setValue(p.getName() + ".pitch", p.getLocation().getPitch());
+        String uuid = p.getUniqueId().toString();
+        ConfigurationManager.setValue(uuid + ".world", p.getLocation().getWorld().getName());
+        ConfigurationManager.setValue(uuid + ".x", p.getLocation().getX());
+        ConfigurationManager.setValue(uuid + ".y", p.getLocation().getY());
+        ConfigurationManager.setValue(uuid + ".z", p.getLocation().getZ());
+        ConfigurationManager.setValue(uuid + ".yaw", p.getLocation().getYaw());
+        ConfigurationManager.setValue(uuid + ".pitch", p.getLocation().getPitch());
         p.sendMessage(ChatColor.GREEN + "Your home has been set!");
         return true;
     }

@@ -18,12 +18,13 @@ public class HomeCommand implements CommandExecutor {
             return false;
         }
         Player p = (Player) commandSender;
-        double x = ConfigurationManager.getValueDouble(p.getName() + ".x");
-        double y = ConfigurationManager.getValueDouble(p.getName() + ".y");
-        double z = ConfigurationManager.getValueDouble(p.getName() + ".z");
-        double yaw = ConfigurationManager.getValueDouble(p.getName() + ".yaw");
-        double pitch = ConfigurationManager.getValueDouble(p.getName() + ".pitch");
-        String worldName = ConfigurationManager.getValue(p.getName() + ".world");
+        String uuid = p.getUniqueId().toString();
+        double x = ConfigurationManager.getValueDouble(uuid + ".x");
+        double y = ConfigurationManager.getValueDouble(uuid + ".y");
+        double z = ConfigurationManager.getValueDouble(uuid + ".z");
+        double yaw = ConfigurationManager.getValueDouble(uuid + ".yaw");
+        double pitch = ConfigurationManager.getValueDouble(uuid + ".pitch");
+        String worldName = ConfigurationManager.getValue(uuid + ".world");
         Location location = new Location(CampusTown.getInstance().getServer().getWorld(worldName),
                 x,
                 y,
