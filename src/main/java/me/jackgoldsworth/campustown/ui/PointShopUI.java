@@ -37,6 +37,21 @@ public class PointShopUI implements Listener {
                 ChatColor.GRAY + "Emerald",
                 getItemDescription(2));
 
+        ItemStack netherite = ItemUtils.createItem(Material.NETHERITE_INGOT,
+                1,
+                ChatColor.GRAY + "Netherite",
+                getItemDescription(5));
+
+        ItemStack firework = ItemUtils.createItem(Material.FIREWORK_ROCKET,
+                64,
+                ChatColor.GRAY + "Fireworks",
+                getItemDescription(10));
+
+        ItemStack enderEgg = ItemUtils.createItem(Material.ENDERMAN_SPAWN_EGG,
+                1,
+                ChatColor.GRAY + "Enderman Egg (Used for Spawner Change)",
+                getItemDescription(15));
+
         ItemStack cowEgg = ItemUtils.createItem(Material.COW_SPAWN_EGG,
                 1,
                 ChatColor.GRAY + "Cow Egg (Used for Spawner Change)",
@@ -49,6 +64,9 @@ public class PointShopUI implements Listener {
 
         inventory.setItem(0, diamond);
         inventory.setItem(1, emerald);
+        inventory.setItem(2, netherite);
+        inventory.setItem(4, firework);
+        inventory.setItem(6, enderEgg);
         inventory.setItem(7, cowEgg);
         inventory.setItem(8, spawner);
     }
@@ -79,6 +97,18 @@ public class PointShopUI implements Listener {
                         player.getInventory().addItem(new ItemStack(Material.EMERALD, 1));
                         ConfigurationManager.savePlayerInfo(info);
                     }
+                } else if (item.getType() == Material.NETHERITE_INGOT) {
+                    boolean result = info.spendPoints(5);
+                    if (result) {
+                        player.getInventory().addItem(new ItemStack(Material.NETHERITE_INGOT, 1));
+                        ConfigurationManager.savePlayerInfo(info);
+                    }
+                } else if (item.getType() == Material.FIREWORK_ROCKET) {
+                    boolean result = info.spendPoints(10);
+                    if (result) {
+                        player.getInventory().addItem(new ItemStack(Material.FIREWORK_ROCKET, 64));
+                        ConfigurationManager.savePlayerInfo(info);
+                    }
                 } else if (item.getType() == Material.SPAWNER) {
                     boolean result = info.spendPoints(20);
                     if (result) {
@@ -89,6 +119,12 @@ public class PointShopUI implements Listener {
                     boolean result = info.spendPoints(10);
                     if (result) {
                         player.getInventory().addItem(new ItemStack(Material.COW_SPAWN_EGG, 1));
+                        ConfigurationManager.savePlayerInfo(info);
+                    }
+                } else if (item.getType() == Material.ENDERMAN_SPAWN_EGG) {
+                    boolean result = info.spendPoints(15);
+                    if (result) {
+                        player.getInventory().addItem(new ItemStack(Material.ENDERMAN_SPAWN_EGG, 1));
                         ConfigurationManager.savePlayerInfo(info);
                     }
                 }
