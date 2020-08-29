@@ -3,7 +3,7 @@ package me.jackgoldsworth.campustown.model;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 
-public class PlayerInfo {
+public class PlayerInfo implements Comparable<PlayerInfo> {
 
     private final String uuid;
     private int exp;
@@ -58,5 +58,14 @@ public class PlayerInfo {
 
     public int getExperienceNextLevel() {
         return (int) Math.round((4 * (Math.pow(level, 3))) / 5);
+    }
+
+    @Override
+    public int compareTo(PlayerInfo o) {
+        // This doesn't follow the natural order of Comparable but this is how i'd like it to work.
+        if (this.getLevel() == o.getLevel()) {
+            return this.getExp() >= o.getExp() ? -1 : 1;
+        }
+        return this.getLevel() > o.getLevel() ? -1 : 1;
     }
 }

@@ -30,3 +30,6 @@ commands:
   tp:
     description: Let's a user teleport to another user by spending 2 points.
     usage: /<command> <username>
+  leaderboard:
+    description: Opens a inventory that display's the top 9 players.
+    usage: /<command>

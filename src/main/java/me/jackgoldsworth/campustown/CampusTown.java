@@ -1,5 +1,6 @@
 package me.jackgoldsworth.campustown;
 
+import me.jackgoldsworth.campustown.command.LeaderboardCommand;
 import me.jackgoldsworth.campustown.command.PrefixCommand;
 import me.jackgoldsworth.campustown.command.fun.D20Command;
 import me.jackgoldsworth.campustown.command.fun.FakeJobCommand;
@@ -13,6 +14,7 @@ import me.jackgoldsworth.campustown.events.ChatEvent;
 import me.jackgoldsworth.campustown.events.DeathEvent;
 import me.jackgoldsworth.campustown.events.KillEvent;
 import me.jackgoldsworth.campustown.model.PlayerInfo;
+import me.jackgoldsworth.campustown.ui.LeaderboardUI;
 import me.jackgoldsworth.campustown.ui.PointShopUI;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -39,6 +41,7 @@ public class CampusTown extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new KillEvent(), this);
         this.getServer().getPluginManager().registerEvents(new ChatEvent(), this);
         this.getServer().getPluginManager().registerEvents(pointShopUI, this);
+        this.getServer().getPluginManager().registerEvents(new LeaderboardUI(), this);
 
         Objects.requireNonNull(this.getServer().getPluginCommand("fakejob")).setExecutor(new FakeJobCommand());
         Objects.requireNonNull(this.getServer().getPluginCommand("tp")).setExecutor(new TeleportCommand());
@@ -48,6 +51,7 @@ public class CampusTown extends JavaPlugin {
         Objects.requireNonNull(this.getServer().getPluginCommand("home")).setExecutor(new HomeCommand());
         Objects.requireNonNull(this.getServer().getPluginCommand("shop")).setExecutor(new ShopCommand());
         Objects.requireNonNull(this.getServer().getPluginCommand("stats")).setExecutor(new StatsCommand());
+        Objects.requireNonNull(this.getServer().getPluginCommand("leaderboard")).setExecutor(new LeaderboardCommand());
     }
 
     @Override

@@ -6,7 +6,10 @@ import me.jackgoldsworth.campustown.CampusTown;
 import me.jackgoldsworth.campustown.model.PlayerInfo;
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class ConfigurationManager {
 
@@ -58,16 +61,15 @@ public class ConfigurationManager {
                     getIntValue(uuid + ".points"),
                     level == 0 ? 1 : level
             );
-            addCacheValue(info);
+            cache.put(info.getUuid(), info);
             return info;
         }
         return cache.getIfPresent(uuid);
     }
 
-    private static void addCacheValue(PlayerInfo info) {
-        if (cache.size() >= 3) {
-        }
-        cache.put(info.getUuid(), info);
+    public static List<PlayerInfo> getAllPlayerInfo() {
+        Set<String> playerKeys = campusTown.getConfig().getKeys(false);
+        return playerKeys.stream().map(ConfigurationManager::getPlayerInfo).collect(Collectors.toList());
     }
 
     public static String getValue(String path) {
