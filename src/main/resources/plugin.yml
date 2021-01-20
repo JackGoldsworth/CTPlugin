@@ -33,3 +33,6 @@ commands:
   leaderboard:
     description: Opens a inventory that display's the top 9 players.
     usage: /<command>
+  world:
+    description: Opens a world portal UI.
+    usage: /<command>
