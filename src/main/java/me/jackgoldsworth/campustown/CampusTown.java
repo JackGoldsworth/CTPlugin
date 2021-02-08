@@ -1,7 +1,7 @@
 package me.jackgoldsworth.campustown;
 
 import me.jackgoldsworth.campustown.command.LeaderboardCommand;
-import me.jackgoldsworth.campustown.command.PrefixCommand;
+import me.jackgoldsworth.campustown.command.fun.PrefixCommand;
 import me.jackgoldsworth.campustown.command.fun.D20Command;
 import me.jackgoldsworth.campustown.command.fun.FakeJobCommand;
 import me.jackgoldsworth.campustown.command.points.ShopCommand;
@@ -12,6 +12,7 @@ import me.jackgoldsworth.campustown.command.tp.TeleportCommand;
 import me.jackgoldsworth.campustown.command.tp.WorldCommand;
 import me.jackgoldsworth.campustown.config.ConfigurationManager;
 import me.jackgoldsworth.campustown.events.ChatEvent;
+import me.jackgoldsworth.campustown.events.CommandEvent;
 import me.jackgoldsworth.campustown.events.DeathEvent;
 import me.jackgoldsworth.campustown.events.KillEvent;
 import me.jackgoldsworth.campustown.model.PlayerInfo;
@@ -48,6 +49,7 @@ public class CampusTown extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new ChatEvent(), this);
         this.getServer().getPluginManager().registerEvents(new LeaderboardUI(), this);
         this.getServer().getPluginManager().registerEvents(new WorldUI(), this);
+        this.getServer().getPluginManager().registerEvents(new CommandEvent(), this);
         this.getServer().getPluginManager().registerEvents(pointShopUI, this);
 
         Objects.requireNonNull(this.getServer().getPluginCommand("fakejob")).setExecutor(new FakeJobCommand());

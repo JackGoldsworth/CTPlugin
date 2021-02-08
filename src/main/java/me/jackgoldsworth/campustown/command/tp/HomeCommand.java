@@ -25,6 +25,10 @@ public class HomeCommand implements CommandExecutor {
         double yaw = ConfigurationManager.getValueDouble(uuid + ".yaw");
         double pitch = ConfigurationManager.getValueDouble(uuid + ".pitch");
         String worldName = ConfigurationManager.getValue(uuid + ".world");
+        if(worldName == null) {
+            p.sendMessage(ChatColor.RED + "You haven't set a home yet!");
+            return true;
+        }
         Location location = new Location(CampusTown.getInstance().getServer().getWorld(worldName),
                 x,
                 y,
